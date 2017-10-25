@@ -25,35 +25,41 @@ void* nyawa(void *arg)
             printf("lohan %i\n",st_lohan);
             sleep(10);
 	    st_lohan-=15;
-	if(st_lohan>100){break;}
+	if(st_lohan>100){st_lohan=-1;}
         }
-	printf("lohan udah mati");
+	printf("lohan udah mati\n");
+	a=0;
+	printf("Permainan berakhir\n");
+	exit(0);
     }
     else if(pthread_equal(id,tid[1]))
     {
         while(st_kepit>0)
-        {
+       {
             printf("kepiting %i\n",st_kepit);
             sleep(20);
 	    st_kepit-=10;
-	if(st_kepit>100){break;}
+	if(st_kepit>100){st_kepit=-1;}
         }
-	printf("kepiting udah mati");
+	b=0;
+	printf("kepiting udah mati\n");
+	printf("Permain berakhir\n");
+	exit(0);
     }
     if(pthread_equal(id,tid[2]))
     {
 	while(1){
-	if(st_kepit < 1 ||st_lohan < 1|| st_kepit > 100 || st_lohan>100 ){
-	printf("Permainan berakhir\n");
-	return NULL;
-	}
         printf("pilih :\n1. beri makan lohan\n2. beri makan kepiting\n");
 	scanf("%d",&input);
 	if(input==1){st_lohan+=10;}
 	else if(input==2){st_kepit+=10;}
 	else printf("input error");
-	
-}
+	if(st_lohan>100 || st_kepit>100){
+		printf("Ada yang overload\n");
+		printf("Permainan berakhir\n");
+		exit(0);
+	}
+	}
 }
     return NULL;
 }
