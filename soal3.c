@@ -23,35 +23,37 @@ void* nyawa(void *arg)
         while(st_lohan>0)
         {
             printf("lohan %i\n",st_lohan);
-            sleep(3);
+            sleep(10);
 	    st_lohan-=15;
 	if(st_lohan>100){break;}
         }
 	printf("lohan udah mati");
-	a=0;
     }
     else if(pthread_equal(id,tid[1]))
     {
         while(st_kepit>0)
         {
             printf("kepiting %i\n",st_kepit);
-            sleep(5);
+            sleep(20);
 	    st_kepit-=10;
 	if(st_kepit>100){break;}
         }
 	printf("kepiting udah mati");
-	b=0;
     }
-    if(pthread_equal(id,tid[2]))//thread untuk menjalankan counter
+    if(pthread_equal(id,tid[2]))
     {
-	while(a==1&&b==1){
+	while(1){
+	if(st_kepit < 1 ||st_lohan < 1|| st_kepit > 100 || st_lohan>100 ){
+	printf("Permainan berakhir\n");
+	return NULL;
+	}
         printf("pilih :\n1. beri makan lohan\n2. beri makan kepiting\n");
 	scanf("%d",&input);
 	if(input==1){st_lohan+=10;}
 	else if(input==2){st_kepit+=10;}
-	else printf("input error");}
-	if(st_lohan>100)st_lohan=0;
-	if(st_kepit>100)st_kepit=0;
+	else printf("input error");
+	
+}
 }
     return NULL;
 }
