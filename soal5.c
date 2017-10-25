@@ -4,14 +4,19 @@
 #include<stdlib.h>
 #include<unistd.h>
 
+FILE* in;
+
 
 pthread_t tid;
-int banyak[100];
-
+int banyak;
+char  vari[1000];
 void* check(void *arg)
 {
-    while((read=getline(&line,&len,in)!=1)
-    {
-    }
     return NULL;
+}
+
+
+int main(int argc,char **argv){
+	
+
 }
