@@ -12,6 +12,14 @@ pthread_t tid[2];//inisialisasi array untuk menampung thread dalam kasusu ini ad
 
 int st_lohan=100;
 int st_kepit=100;
+int input;
+void berimakan(){
+	printf("pilih :\n1. beri makan lohan\n2. beri makan kepiting");
+	scanf("%d,&input);
+	if(input==1){iter=iter+10;}
+	else if(input==2){iter1=iter1+10;}
+	else printf("input error");
+}
 void* nyawa(void *arg)
 {
     unsigned long i=0;
@@ -27,7 +35,9 @@ void* nyawa(void *arg)
             sleep(10);
 	    iter=iter-15;
             system("clear");
+	if(iter>100){break;}
         }
+	printf("lohan udah mati");
     }
     else if(pthread_equal(id,tid[1]))
     {
@@ -39,7 +49,9 @@ void* nyawa(void *arg)
             sleep(20);
 	    iter1=iter1-10;
             system("clear");
+	if(iter1>100){break;}
         }
+	printf("kepiting udah mati");
     }
     }
     return NULL;
